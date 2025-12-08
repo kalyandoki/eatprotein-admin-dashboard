@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+/* Custom small utilities + transitions + scrollbar*/
+:root {
+  --sidebar-width: 260px;
+  --sidebar-collapsed: 72px;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+* {
+  transition: background-color 0.18s ease, color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+  border-radius: 999px;
+}
+.sidebar-bg {
+  background: linear-gradient(180deg, #258440 0%, #1e803a 100%);
+}
