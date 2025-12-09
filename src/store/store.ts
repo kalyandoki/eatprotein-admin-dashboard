@@ -10,6 +10,11 @@ import storeTagReducer from "../modules/shop/storeTags/storeTagsSlice";
 //Order Module Reducers
 import orderReducer from "../modules/orders/orderSlice";
 
+// Banners Module Reducers
+import bannerReducer from "../modules/banners/homeBanners/homeBannersSlice";
+import categoryBannerReducer from "../modules/banners/categoryBanners/categoryBannersSlice";
+import locationBannerReducer from "../modules/banners/locationBanners/locationBannersSlice";
+
 import locationReducer from "../modules/locations/locationsSlice";
 
 import masterProductsReducer from "../modules/mosterStores/masterProducts/masterProductsSlice";
@@ -21,6 +26,16 @@ import storeListReducer from "../modules/stores/storeList/storeListSlice";
 import storeWalletReducer from "../modules/stores/storeWallet/storeWalletSlice";
 import storeAnalyticsReducer from "../modules/stores/storeAnalytics/storeAnalyticsSlice";
 import storePayoutsReducer from "../modules/stores/storePayouts/storePayoutsSlice";
+
+// Coupons Module Reducers
+import appCouponReducer from "../modules/coupons/appCoupons/appCouponsSlice";
+import storeCouponReducer from "../modules/coupons/storeCoupons/storeCouponsSlice";
+import locationCouponReducer from "../modules/coupons/locationCoupons/locationCouponsSlice";
+
+// Payments Module Reducers
+import paymentsReducer from "../modules/payments/payments/paymentsSlice";
+import storePaymentsReducer from "../modules/payments/storePayments/storePaymentsSlice";
+import franchisePaymentsReducer from "../modules/payments/franchise/franchisePaymentsSlice";
 
 import uiReducer from "./slices/uiSlice";
 import authReducer from "./slices/authSlice";
@@ -37,6 +52,11 @@ export const store = configureStore({
     storeTags: storeTagReducer,
 
     orders: orderReducer,
+
+    homeBanners: bannerReducer,
+    categoryBanners: categoryBannerReducer,
+    locationBanners: locationBannerReducer,
+
     locations: locationReducer,
 
     masterProducts: masterProductsReducer,
@@ -47,6 +67,14 @@ export const store = configureStore({
     storeWallet: storeWalletReducer,
     storeAnalytics: storeAnalyticsReducer,
     storePayouts: storePayoutsReducer,
+
+    appCoupons: appCouponReducer,
+    storeCoupons: storeCouponReducer,
+    locationCoupons: locationCouponReducer,
+
+    payments: paymentsReducer,
+    storePayments: storePaymentsReducer,
+    franchisePayments: franchisePaymentsReducer,
 
     ui: uiReducer,
     auth: authReducer,

@@ -12,9 +12,11 @@ const DietModulePage = lazy(() => import("../pages/DietModulePage"));
 const FitnessModulePage = lazy(() => import("../pages/FitnessModulePage"));
 const RecipesModulePage = lazy(() => import("../pages/RecipesModulePage"));
 const CMSPage = lazy(() => import("../pages/CMSPage"));
-const PaymentsPage = lazy(() => import("../pages/PaymentsPage"));
+// const PaymentsPage = lazy(() => import("../pages/PaymentsPage"));
 const ReportsPage = lazy(() => import("../pages/ReportsPage"));
 const ProfilePage = lazy(() => import("../pages/ProfilePage"));
+
+// Shop Module Pages
 const ShopProductsPage = lazy(
   () => import("../modules/shop/pages/ShopProductsPage")
 );
@@ -33,11 +35,26 @@ const StoreTagsPage = lazy(
   () => import("../modules/shop/storeTags/pages/StoreTagsPage")
 );
 
+// Orders Module Page
 const OrdersPage = lazy(() => import("../modules/orders/pages/OrdersPage"));
+
+// Banners Module Pages
+const BannersPage = lazy(
+  () => import("../modules/banners/homeBanners/pages/HomeBannersPage")
+);
+const CategoryBannersPage = lazy(
+  () => import("../modules/banners/categoryBanners/pages/CategoryBannersPage")
+);
+const LocationBannersPage = lazy(
+  () => import("../modules/banners/locationBanners/pages/LocationBannersPage")
+);
+
+// Locations Module Page
 const LocationsPage = lazy(
   () => import("../modules/locations/pages/LocationsPage")
 );
 
+// Master Store Module Pages
 const MasterStorePage = lazy(
   () =>
     import("../modules/mosterStores/masterProducts/pages/MasterProductsPage")
@@ -47,6 +64,7 @@ const MasterStorePage = lazy(
 //     import("../modules/mosterStores/storeAssignment/pages/StoreAssignmentPage")
 // );
 
+// Store Module Pages
 const StoreListPage = lazy(
   () => import("../modules/stores/storeList/pages/StoreListPage")
 );
@@ -58,6 +76,27 @@ const StoreAnalyticsPage = lazy(
 );
 const StorePayoutsPage = lazy(
   () => import("../modules/stores/storePayouts/pages/StorePayoutsPage")
+);
+
+// Coupons Module Page
+const CouponsPage = lazy(
+  () => import("../modules/coupons/appCoupons/pages/AppCouponsPage")
+);
+const StoreCouponsPage = lazy(
+  () => import("../modules/coupons/storeCoupons/pages/StoreCouponsPage")
+);
+const LocationCouponsPage = lazy(
+  () => import("../modules/coupons/locationCoupons/pages/LocationCouponsPage")
+);
+
+const PaymentsPage = lazy(
+  () => import("../modules/payments/payments/pages/PaymentsPage")
+);
+const StorePaymentsPage = lazy(
+  () => import("../modules/payments/storePayments/pages/StorePaymentsPage")
+);
+const FrachisePaymentsPage = lazy(
+  () => import("../modules/payments/franchise/pages/FranchisePaymentsPage")
 );
 
 export default function AppRoutes() {
@@ -78,6 +117,18 @@ export default function AppRoutes() {
 
       {/* Orders Module Route */}
       <Route path="/orders" element={<OrdersPage />} />
+
+      {/* Banners Module Route */}
+      <Route path="/banners/home-banners" element={<BannersPage />} />
+      <Route
+        path="/banners/category-banners"
+        element={<CategoryBannersPage />}
+      />
+      <Route
+        path="/banners/location-banners"
+        element={<LocationBannersPage />}
+      />
+
       {/* Locations Module Route */}
       <Route path="/locations" element={<LocationsPage />} />
 
@@ -93,6 +144,21 @@ export default function AppRoutes() {
       <Route path="/stores/store-wallet" element={<StoreWalletPage />} />
       <Route path="/stores/store-analytics" element={<StoreAnalyticsPage />} />
       <Route path="/stores/store-payouts" element={<StorePayoutsPage />} />
+
+      {/* Coupons Module Route */}
+      <Route path="/coupons/app-coupons" element={<CouponsPage />} />
+      <Route path="/coupons/store-coupons" element={<StoreCouponsPage />} />
+      <Route
+        path="/coupons/location-coupons"
+        element={<LocationCouponsPage />}
+      />
+
+      <Route path="/payments/payments-overview" element={<PaymentsPage />} />
+      <Route path="/payments/store-payments" element={<StorePaymentsPage />} />
+      <Route
+        path="/payments/franchise-payments"
+        element={<FrachisePaymentsPage />}
+      />
 
       <Route path="/master-store" element={<MasterStorePage />} />
       <Route path="/store-management" element={<StoreManagementPage />} />

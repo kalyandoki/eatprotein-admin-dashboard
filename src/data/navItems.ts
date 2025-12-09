@@ -123,6 +123,30 @@ export const navItems: NavItem[] = [
     ],
   },
   { id: "orders", label: "Orders", path: "/orders", icon: "FaBoxOpen" },
+
+  {
+    id: "banners",
+    label: "Banners",
+    path: "/banners",
+    icon: "FaImage",
+    children: [
+      {
+        id: "Home Banners",
+        label: "Home Banners",
+        path: "/banners/home-banners",
+      },
+      {
+        id: "Category Banners",
+        label: "Category Banners",
+        path: "/banners/category-banners",
+      },
+      {
+        id: "Location Banners",
+        label: "Location Banners",
+        path: "/banners/location-banners",
+      },
+    ],
+  },
   {
     id: "locations",
     label: "Locations",
@@ -169,6 +193,25 @@ export const navItems: NavItem[] = [
         id: "store-analytics",
         label: "Analytics",
         path: "/stores/store-analytics",
+      },
+    ],
+  },
+  {
+    id: "coupons",
+    label: "Coupons",
+    path: "/coupons",
+    icon: "FaTag",
+    children: [
+      { id: "app-coupons", label: "App Coupons", path: "/coupons/app-coupons" },
+      {
+        id: "store-coupons",
+        label: "Store Coupons",
+        path: "/coupons/store-coupons",
+      },
+      {
+        id: "location-coupons",
+        label: "Location Coupons",
+        path: "/coupons/location-coupons",
       },
     ],
   },
@@ -267,9 +310,26 @@ export const navItems: NavItem[] = [
     path: "/payments",
     icon: "FaCreditCard",
     children: [
-      { id: "transactions", label: "Transactions", path: "/transactions" },
-      { id: "settlements", label: "Settlements", path: "/settlements" },
-      { id: "refunds", label: "Refunds", path: "/refunds" },
+      {
+        id: "payments-overview",
+        label: "Payments Overview",
+        path: "/payments/payments-overview",
+      },
+      {
+        id: "store-payments",
+        label: "Store Payments",
+        path: "/payments/store-payments",
+      },
+      {
+        id: "franchise-payments",
+        label: "Franchise Payments",
+        path: "/payments/franchise-payments",
+      },
+      {
+        id: "delivery-boy-payments",
+        label: "Delivery Boy Payments",
+        path: "/payments/delivery-boy-payments",
+      },
     ],
   },
   {
