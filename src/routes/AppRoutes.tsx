@@ -16,6 +16,9 @@ const CMSPage = lazy(() => import("../pages/CMSPage"));
 const ReportsPage = lazy(() => import("../pages/ReportsPage"));
 const ProfilePage = lazy(() => import("../pages/ProfilePage"));
 
+//Not Found Page
+const NotFoundPage = lazy(() => import("../components/common/NotFound"));
+
 // Shop Module Pages
 const ShopProductsPage = lazy(
   () => import("../modules/shop/pages/ShopProductsPage")
@@ -98,13 +101,42 @@ const StorePaymentsPage = lazy(
 const FrachisePaymentsPage = lazy(
   () => import("../modules/payments/franchise/pages/FranchisePaymentsPage")
 );
+const DeliveryBoyPaymentPage = lazy(
+  () => import("../modules/payments/deliveryBoys/pages/DeliveryBoysPage")
+);
+
+//users Module Page
+const CustomersPage = lazy(
+  () => import("../modules/users/customers/pages/CustomersPage")
+);
+const FranchiseOwnersPage = lazy(
+  () => import("../modules/users/franchiseOwners/pages/FranchiseOwnersPage")
+);
+const StoreAdminsPage = lazy(
+  () => import("../modules/users/storeAdmins/pages/StoreAdminsPage")
+);
+const DeliveryBoysPage = lazy(
+  () => import("../modules/users/deliveryBoys/pages/DeliveryBoysPage")
+);
+const TeamPage = lazy(() => import("../modules/users/team/pages/TeamPage"));
+
+//Settlements Module Page
+const StoreSettlementsPage = lazy(
+  () =>
+    import("../modules/settlements/storeSettlements/pages/StoreSettlementsPage")
+);
+const DBSettlementsPage = lazy(
+  () => import("../modules/settlements/dbSettlements/pages/DBSettlementsPage")
+);
+const FOSettlementsPage = lazy(
+  () => import("../modules/settlements/foSettlements/pages/FOSettlementsPage")
+);
 
 export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
       <Route path="/dashboard" element={<DashboardPage />} />
-
       {/* Shop Module Routes */}
       <Route path="/shop" element={<ShopModulePage />} />
       <Route path="/shop/products" element={<ShopProductsPage />} />
@@ -114,10 +146,8 @@ export default function AppRoutes() {
       <Route path="/shop/uom" element={<ShopUOMPage />} />
       <Route path="/shop/tags" element={<ShopTagsPage />} />
       <Route path="/shop/store-tags" element={<StoreTagsPage />} />
-
       {/* Orders Module Route */}
       <Route path="/orders" element={<OrdersPage />} />
-
       {/* Banners Module Route */}
       <Route path="/banners/home-banners" element={<BannersPage />} />
       <Route
@@ -128,23 +158,19 @@ export default function AppRoutes() {
         path="/banners/location-banners"
         element={<LocationBannersPage />}
       />
-
       {/* Locations Module Route */}
       <Route path="/locations" element={<LocationsPage />} />
-
       {/* Master Store Module Routes */}
       <Route path="/masterStore/master-store" element={<MasterStorePage />} />
       {/* <Route
         path="/masterStore/store-assignment"
         element={<MasterStoreAssignmentPage />}
       /> */}
-
       {/* Store Module Routes */}
       <Route path="/stores/store-list" element={<StoreListPage />} />
       <Route path="/stores/store-wallet" element={<StoreWalletPage />} />
       <Route path="/stores/store-analytics" element={<StoreAnalyticsPage />} />
       <Route path="/stores/store-payouts" element={<StorePayoutsPage />} />
-
       {/* Coupons Module Route */}
       <Route path="/coupons/app-coupons" element={<CouponsPage />} />
       <Route path="/coupons/store-coupons" element={<StoreCouponsPage />} />
@@ -152,12 +178,35 @@ export default function AppRoutes() {
         path="/coupons/location-coupons"
         element={<LocationCouponsPage />}
       />
-
+      {/*Payments  Module Route */}
       <Route path="/payments/payments-overview" element={<PaymentsPage />} />
       <Route path="/payments/store-payments" element={<StorePaymentsPage />} />
       <Route
         path="/payments/franchise-payments"
         element={<FrachisePaymentsPage />}
+      />
+      <Route
+        path="/payments/delivery-boy-payments"
+        element={<DeliveryBoyPaymentPage />}
+      />
+      {/*Users  Module Route */}
+      <Route path="/users/customers" element={<CustomersPage />} />
+      <Route path="/users/franchise-owner" element={<FranchiseOwnersPage />} />
+      <Route path="/users/store-admins" element={<StoreAdminsPage />} />
+      <Route path="/users/delivery-boys" element={<DeliveryBoysPage />} />
+      <Route path="/users/team" element={<TeamPage />} />
+      {/*Settlements  Module Route */}
+      <Route
+        path="/settlements/store-settlements"
+        element={<StoreSettlementsPage />}
+      />
+      <Route
+        path="/settlements/db-settlements"
+        element={<DBSettlementsPage />}
+      />
+      <Route
+        path="/settlements/fo-settlements"
+        element={<FOSettlementsPage />}
       />
 
       <Route path="/master-store" element={<MasterStorePage />} />
@@ -172,8 +221,7 @@ export default function AppRoutes() {
       <Route path="/reports" element={<ReportsPage />} />
       <Route path="/settings" element={<SettingsPage />} />
       <Route path="/profile" element={<ProfilePage />} />
-
-      <Route path="*" element={<div>Page not found</div>} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 }

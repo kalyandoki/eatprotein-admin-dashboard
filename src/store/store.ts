@@ -36,6 +36,19 @@ import locationCouponReducer from "../modules/coupons/locationCoupons/locationCo
 import paymentsReducer from "../modules/payments/payments/paymentsSlice";
 import storePaymentsReducer from "../modules/payments/storePayments/storePaymentsSlice";
 import franchisePaymentsReducer from "../modules/payments/franchise/franchisePaymentsSlice";
+import deliveryBoysReducer from "../modules/payments/deliveryBoys/deliveryBoysSlice";
+
+//Users Module Reducers
+import customersReducer from "../modules/users/customers/customersSlice";
+import franchiseOwnersReducer from "../modules/users/franchiseOwners/franchiseOwnersSlice";
+import storeAdminsReducer from "../modules/users/storeAdmins/storeAdminsSlice";
+import deliveryBoysUsersReducer from "../modules/users/deliveryBoys/deliveryBoysSlice";
+import teamReducer from "../modules/users/team/teamSlice";
+
+// Settlements Modules Reducer
+import storeSettlementsReducer from "../modules/settlements/storeSettlements/storeSettlementsSlice";
+import dbSettlementsReducer from "../modules/settlements/dbSettlements/dbSettlementsSlice";
+import foSettlementsReducer from "../modules/settlements/foSettlements/foSettlementsSlice";
 
 import uiReducer from "./slices/uiSlice";
 import authReducer from "./slices/authSlice";
@@ -75,6 +88,17 @@ export const store = configureStore({
     payments: paymentsReducer,
     storePayments: storePaymentsReducer,
     franchisePayments: franchisePaymentsReducer,
+    deliveryBoysPayments: deliveryBoysReducer,
+
+    customers: customersReducer,
+    franchiseOwners: franchiseOwnersReducer,
+    storeAdmins: storeAdminsReducer,
+    deliveryBoys: deliveryBoysUsersReducer,
+    team: teamReducer,
+
+    storeSettlements: storeSettlementsReducer,
+    dbSettlements: dbSettlementsReducer,
+    foSettlements: foSettlementsReducer,
 
     ui: uiReducer,
     auth: authReducer,

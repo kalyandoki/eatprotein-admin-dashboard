@@ -303,7 +303,39 @@ export const navItems: NavItem[] = [
   //     { id: "blogs", label: "Blogs", path: "/blogs" },
   //   ],
   // },
-  { id: "users", label: "Users", path: "/users", icon: "FaUsers" },
+  {
+    id: "users",
+    label: "Users",
+    path: "/users",
+    icon: "FaUsers",
+    children: [
+      {
+        id: "customers",
+        label: "Customers",
+        path: "/users/customers",
+      },
+      {
+        id: "franchise-owner",
+        label: "Franchise Owner",
+        path: "/users/franchise-owner",
+      },
+      {
+        id: "store-admins",
+        label: "Store Admins",
+        path: "/users/store-admins",
+      },
+      {
+        id: "delivery-boys",
+        label: "Delivery Boys",
+        path: "/users/delivery-boys",
+      },
+      {
+        id: "team",
+        label: "Team",
+        path: "/users/team",
+      },
+    ],
+  },
   {
     id: "payments",
     label: "Payments",
@@ -329,6 +361,29 @@ export const navItems: NavItem[] = [
         id: "delivery-boy-payments",
         label: "Delivery Boy Payments",
         path: "/payments/delivery-boy-payments",
+      },
+    ],
+  },
+  {
+    id: "settlements",
+    label: "Settlements",
+    path: "/settlements",
+    icon: "FaMoneyCheckAlt",
+    children: [
+      {
+        id: "store-settlements",
+        label: "Store Settlements",
+        path: "/settlements/store-settlements",
+      },
+      {
+        id: "db-settlements",
+        label: "DB Settlements",
+        path: "/settlements/db-settlements",
+      },
+      {
+        id: "fo-settlements",
+        label: "FO Settlements",
+        path: "/settlements/fo-settlements",
       },
     ],
   },
