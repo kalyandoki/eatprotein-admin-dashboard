@@ -4,6 +4,8 @@ import DashboardPage from "../pages/DashboardPage";
 import UsersPage from "../pages/UsersPage";
 import SettingsPage from "../pages/SettingsPage";
 
+const ScrollToTop = lazy(() => import("../components/common/ScrollToTop"));
+
 const ShopModulePage = lazy(() => import("../pages/ShopModulePage"));
 // const MasterStorePage = lazy(() => import("../pages/MasterStorePage"));
 const StoreManagementPage = lazy(() => import("../pages/StoreManagementPage"));
@@ -40,6 +42,12 @@ const StoreTagsPage = lazy(
 
 // Orders Module Page
 const OrdersPage = lazy(() => import("../modules/orders/pages/OrdersPage"));
+const StoreOrdersPage = lazy(
+  () => import("../modules/orders/pages/StoreOrdersPage")
+);
+const OrderDetailsPage = lazy(
+  () => import("../modules/orders/pages/OrderDetailsPage")
+);
 
 // Banners Module Pages
 const BannersPage = lazy(
@@ -68,6 +76,10 @@ const MasterStorePage = lazy(
 // );
 
 // Store Module Pages
+const StorePage = lazy(() => import("../modules/stores/pages/StorePage"));
+const StoreProductsPage = lazy(
+  () => import("../modules/stores/pages/StoreProductsPage")
+);
 const StoreListPage = lazy(
   () => import("../modules/stores/storeList/pages/StoreListPage")
 );
@@ -134,94 +146,120 @@ const FOSettlementsPage = lazy(
 
 export default function AppRoutes() {
   return (
-    <Routes>
-      <Route path="/" element={<Navigate to="/dashboard" replace />} />
-      <Route path="/dashboard" element={<DashboardPage />} />
-      {/* Shop Module Routes */}
-      <Route path="/shop" element={<ShopModulePage />} />
-      <Route path="/shop/products" element={<ShopProductsPage />} />
-      <Route path="/shop/categories" element={<ShopCategoryPage />} />
-      <Route path="/shop/sub-categories" element={<ShopSubCategoriesPage />} />
-      <Route path="/shop/brands" element={<ShopBrandsPage />} />
-      <Route path="/shop/uom" element={<ShopUOMPage />} />
-      <Route path="/shop/tags" element={<ShopTagsPage />} />
-      <Route path="/shop/store-tags" element={<StoreTagsPage />} />
-      {/* Orders Module Route */}
-      <Route path="/orders" element={<OrdersPage />} />
-      {/* Banners Module Route */}
-      <Route path="/banners/home-banners" element={<BannersPage />} />
-      <Route
-        path="/banners/category-banners"
-        element={<CategoryBannersPage />}
-      />
-      <Route
-        path="/banners/location-banners"
-        element={<LocationBannersPage />}
-      />
-      {/* Locations Module Route */}
-      <Route path="/locations" element={<LocationsPage />} />
-      {/* Master Store Module Routes */}
-      <Route path="/masterStore/master-store" element={<MasterStorePage />} />
-      {/* <Route
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
+        {/* Shop Module Routes */}
+        <Route path="/shop" element={<ShopModulePage />} />
+        <Route path="/shop/products" element={<ShopProductsPage />} />
+        <Route path="/shop/categories" element={<ShopCategoryPage />} />
+        <Route
+          path="/shop/sub-categories"
+          element={<ShopSubCategoriesPage />}
+        />
+        <Route path="/shop/brands" element={<ShopBrandsPage />} />
+        <Route path="/shop/uom" element={<ShopUOMPage />} />
+        <Route path="/shop/tags" element={<ShopTagsPage />} />
+        <Route path="/shop/store-tags" element={<StoreTagsPage />} />
+        {/* Orders Module Route */}
+        <Route path="/orders" element={<OrdersPage />} />
+        <Route
+          path="/orders/store-orders/:storeId"
+          element={<StoreOrdersPage />}
+        />
+        <Route path="/orders/orderDetails/:id" element={<OrderDetailsPage />} />
+
+        {/* Banners Module Route */}
+        <Route path="/banners/home-banners" element={<BannersPage />} />
+        <Route
+          path="/banners/category-banners"
+          element={<CategoryBannersPage />}
+        />
+        <Route
+          path="/banners/location-banners"
+          element={<LocationBannersPage />}
+        />
+        {/* Locations Module Route */}
+        <Route path="/locations" element={<LocationsPage />} />
+        {/* Master Store Module Routes */}
+        <Route path="/masterStore/master-store" element={<MasterStorePage />} />
+        {/* <Route
         path="/masterStore/store-assignment"
         element={<MasterStoreAssignmentPage />}
       /> */}
-      {/* Store Module Routes */}
-      <Route path="/stores/store-list" element={<StoreListPage />} />
-      <Route path="/stores/store-wallet" element={<StoreWalletPage />} />
-      <Route path="/stores/store-analytics" element={<StoreAnalyticsPage />} />
-      <Route path="/stores/store-payouts" element={<StorePayoutsPage />} />
-      {/* Coupons Module Route */}
-      <Route path="/coupons/app-coupons" element={<CouponsPage />} />
-      <Route path="/coupons/store-coupons" element={<StoreCouponsPage />} />
-      <Route
-        path="/coupons/location-coupons"
-        element={<LocationCouponsPage />}
-      />
-      {/*Payments  Module Route */}
-      <Route path="/payments/payments-overview" element={<PaymentsPage />} />
-      <Route path="/payments/store-payments" element={<StorePaymentsPage />} />
-      <Route
-        path="/payments/franchise-payments"
-        element={<FrachisePaymentsPage />}
-      />
-      <Route
-        path="/payments/delivery-boy-payments"
-        element={<DeliveryBoyPaymentPage />}
-      />
-      {/*Users  Module Route */}
-      <Route path="/users/customers" element={<CustomersPage />} />
-      <Route path="/users/franchise-owner" element={<FranchiseOwnersPage />} />
-      <Route path="/users/store-admins" element={<StoreAdminsPage />} />
-      <Route path="/users/delivery-boys" element={<DeliveryBoysPage />} />
-      <Route path="/users/team" element={<TeamPage />} />
-      {/*Settlements  Module Route */}
-      <Route
-        path="/settlements/store-settlements"
-        element={<StoreSettlementsPage />}
-      />
-      <Route
-        path="/settlements/db-settlements"
-        element={<DBSettlementsPage />}
-      />
-      <Route
-        path="/settlements/fo-settlements"
-        element={<FOSettlementsPage />}
-      />
+        {/* Store Module Routes */}
+        <Route path="/stores" element={<StorePage />} />
+        <Route
+          path="stores/store-products/:storeName"
+          element={<StoreProductsPage />}
+        />
+        <Route path="/stores/store-list" element={<StoreListPage />} />
+        <Route path="/stores/store-wallet" element={<StoreWalletPage />} />
+        <Route
+          path="/stores/store-analytics"
+          element={<StoreAnalyticsPage />}
+        />
+        <Route path="/stores/store-payouts" element={<StorePayoutsPage />} />
+        {/* Coupons Module Route */}
+        <Route path="/coupons/app-coupons" element={<CouponsPage />} />
+        <Route path="/coupons/store-coupons" element={<StoreCouponsPage />} />
+        <Route
+          path="/coupons/location-coupons"
+          element={<LocationCouponsPage />}
+        />
+        {/*Payments  Module Route */}
+        <Route path="/payments/payments-overview" element={<PaymentsPage />} />
+        <Route
+          path="/payments/store-payments"
+          element={<StorePaymentsPage />}
+        />
+        <Route
+          path="/payments/franchise-payments"
+          element={<FrachisePaymentsPage />}
+        />
+        <Route
+          path="/payments/delivery-boy-payments"
+          element={<DeliveryBoyPaymentPage />}
+        />
+        {/*Users  Module Route */}
+        <Route path="/users/customers" element={<CustomersPage />} />
+        <Route
+          path="/users/franchise-owner"
+          element={<FranchiseOwnersPage />}
+        />
+        <Route path="/users/store-admins" element={<StoreAdminsPage />} />
+        <Route path="/users/delivery-boys" element={<DeliveryBoysPage />} />
+        <Route path="/users/team" element={<TeamPage />} />
+        {/*Settlements  Module Route */}
+        <Route
+          path="/settlements/store-settlements"
+          element={<StoreSettlementsPage />}
+        />
+        <Route
+          path="/settlements/db-settlements"
+          element={<DBSettlementsPage />}
+        />
+        <Route
+          path="/settlements/fo-settlements"
+          element={<FOSettlementsPage />}
+        />
 
-      <Route path="/master-store" element={<MasterStorePage />} />
-      <Route path="/store-management" element={<StoreManagementPage />} />
-      <Route path="/franchise" element={<FranchisePage />} />
-      <Route path="/diet" element={<DietModulePage />} />
-      <Route path="/fitness" element={<FitnessModulePage />} />
-      <Route path="/recipes" element={<RecipesModulePage />} />
-      <Route path="/cms" element={<CMSPage />} />
-      <Route path="/users" element={<UsersPage />} />
-      <Route path="/payments" element={<PaymentsPage />} />
-      <Route path="/reports" element={<ReportsPage />} />
-      <Route path="/settings" element={<SettingsPage />} />
-      <Route path="/profile" element={<ProfilePage />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+        <Route path="/master-store" element={<MasterStorePage />} />
+        <Route path="/store-management" element={<StoreManagementPage />} />
+        <Route path="/franchise" element={<FranchisePage />} />
+        <Route path="/diet" element={<DietModulePage />} />
+        <Route path="/fitness" element={<FitnessModulePage />} />
+        <Route path="/recipes" element={<RecipesModulePage />} />
+        <Route path="/cms" element={<CMSPage />} />
+        <Route path="/users" element={<UsersPage />} />
+        <Route path="/payments" element={<PaymentsPage />} />
+        <Route path="/reports" element={<ReportsPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </>
   );
 }

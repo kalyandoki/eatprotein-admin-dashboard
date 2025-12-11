@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 // Shop Reducers
 import shopReducer from "../modules/shop/shopSlice";
+import storeReducer from "../modules/stores/storeSlice";
 import categoryReducer from "../modules/shop/categories/categorySlice";
 import subCategoriesReducer from "../modules/shop/subCategories/subCategoriesSlice";
 import brandReducer from "../modules/shop/brands/brandsSlice";
@@ -76,6 +77,7 @@ export const store = configureStore({
     // pricing: pricingReducer,
     // storeAssignment: storeAssignmentReducer,
 
+    stores: storeReducer,
     storeList: storeListReducer,
     storeWallet: storeWalletReducer,
     storeAnalytics: storeAnalyticsReducer,
