@@ -1,5 +1,6 @@
 // src/modules/payments/components/PaymentsTable.tsx
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { PaymentRow } from "../paymentsSlice";
 import {
   FiFilter,
@@ -43,6 +44,7 @@ export default function PaymentsTable({
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
+  const navigate = useNavigate();
 
   if (isLoading) {
     return (
@@ -143,10 +145,28 @@ export default function PaymentsTable({
                       {row.date}
                     </div>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  {/* <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex items-center text-sm font-medium text-gray-900">
                       <FiShoppingBag className="mr-2 h-4 w-4 text-gray-400" />
                       <span className="max-w-xs truncate">{row.storeName}</span>
+                    </div>
+                  </td> */}
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="flex items-center text-sm font-medium text-gray-900">
+                      <FiShoppingBag className="mr-2 h-4 w-4 text-gray-400" />
+                      <div
+                        className="text-sm font-medium text-emerald-600 hover:text-emerald-800 cursor-pointer max-w-xs truncate"
+                        onClick={() =>
+                          navigate(
+                            `/payments/store-payments/${encodeURIComponent(
+                              row.storeName
+                            )}`
+                          )
+                        }
+                        title="Click to view details"
+                      >
+                        {row.storeName}
+                      </div>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">

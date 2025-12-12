@@ -66,10 +66,17 @@ const LocationsPage = lazy(
 );
 
 // Master Store Module Pages
+// import MasterStore from "../modules/masterStore";
 const MasterStorePage = lazy(
-  () =>
-    import("../modules/mosterStores/masterProducts/pages/MasterProductsPage")
+  () => import("../modules/masterStore/pages/MasterStorePage")
 );
+// const MonsterStorePage = lazy(
+//   () => import("../modules/mosterStores/pages/MonsterStorePage")
+// );
+// const MasterStorePage = lazy(
+//   () =>
+//     import("../modules/mosterStores/masterProducts/pages/MasterProductsPage")
+// );
 // const MasterStoreAssignmentPage = lazy(
 //   () =>
 //     import("../modules/mosterStores/storeAssignment/pages/StoreAssignmentPage")
@@ -110,6 +117,10 @@ const PaymentsPage = lazy(
 const StorePaymentsPage = lazy(
   () => import("../modules/payments/storePayments/pages/StorePaymentsPage")
 );
+const StorePaymentDetailsPage = lazy(
+  () =>
+    import("../modules/payments/storePayments/pages/StorePaymentDetailsPage")
+);
 const FrachisePaymentsPage = lazy(
   () => import("../modules/payments/franchise/pages/FranchisePaymentsPage")
 );
@@ -142,6 +153,21 @@ const DBSettlementsPage = lazy(
 );
 const FOSettlementsPage = lazy(
   () => import("../modules/settlements/foSettlements/pages/FOSettlementsPage")
+);
+const StoreSettlementDetailsPage = lazy(
+  () =>
+    import(
+      "../modules/settlements/storeSettlementDetails/pages/StoreSettlementDetailsPage"
+    )
+);
+
+//Franchise Module Page
+const FranchiseListPage = lazy(
+  () => import("../modules/franchise/franchiseList/pages/FranchiseListPage")
+);
+const FranchiseLocationPage = lazy(
+  () =>
+    import("../modules/franchise/franchiseLocation/pages/FranchiseLocationPage")
 );
 
 export default function AppRoutes() {
@@ -184,7 +210,8 @@ export default function AppRoutes() {
         {/* Locations Module Route */}
         <Route path="/locations" element={<LocationsPage />} />
         {/* Master Store Module Routes */}
-        <Route path="/masterStore/master-store" element={<MasterStorePage />} />
+        <Route path="/master-store" element={<MasterStorePage />} />
+        {/* <Route path="/master-store" element={<MonsterStorePage />} /> */}
         {/* <Route
         path="/masterStore/store-assignment"
         element={<MasterStoreAssignmentPage />}
@@ -216,6 +243,10 @@ export default function AppRoutes() {
           element={<StorePaymentsPage />}
         />
         <Route
+          path="/payments/store-payments/:storeName"
+          element={<StorePaymentDetailsPage />}
+        />
+        <Route
           path="/payments/franchise-payments"
           element={<FrachisePaymentsPage />}
         />
@@ -245,8 +276,21 @@ export default function AppRoutes() {
           path="/settlements/fo-settlements"
           element={<FOSettlementsPage />}
         />
+        <Route
+          path="/settlements/store-settlements/:storeName"
+          element={<StoreSettlementDetailsPage />}
+        />
 
-        <Route path="/master-store" element={<MasterStorePage />} />
+        <Route
+          path="/franchise/franchise-list"
+          element={<FranchiseListPage />}
+        />
+        <Route
+          path="/franchise/franchise-location"
+          element={<FranchiseLocationPage />}
+        />
+
+        {/* <Route path="/master-store" element={<MasterStorePage />} /> */}
         <Route path="/store-management" element={<StoreManagementPage />} />
         <Route path="/franchise" element={<FranchisePage />} />
         <Route path="/diet" element={<DietModulePage />} />

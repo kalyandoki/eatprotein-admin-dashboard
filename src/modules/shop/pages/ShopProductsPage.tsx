@@ -2117,9 +2117,9 @@ const ShopProductsPage: React.FC = () => {
                         <th className="p-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Product
                         </th>
-                        <th className="p-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        {/* <th className="p-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Price / Stock
-                        </th>
+                        </th> */}
                         <th className="p-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                           Category
                         </th>
@@ -2179,7 +2179,7 @@ const ShopProductsPage: React.FC = () => {
                               </div>
                             </div>
                           </td>
-                          <td className="p-3">
+                          {/* <td className="p-3">
                             <div className="font-bold text-lg text-emerald-600">
                               ₹{p.price}
                             </div>
@@ -2191,7 +2191,7 @@ const ShopProductsPage: React.FC = () => {
                               {p.stock < 10 ? "Low Stock: " : "Stock: "}
                               {p.stock}
                             </div>
-                          </td>
+                          </td> */}
                           <td className="p-3">
                             <div className="flex flex-col gap-1">
                               <span className="inline-block px-2 py-1 text-xs font-medium rounded-full bg-emerald-100 text-emerald-800">

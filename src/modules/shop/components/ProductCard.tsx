@@ -80,7 +80,7 @@
 
 // src/modules/shop/components/ProductCard.tsx
 import React from "react";
-import { ShopProduct } from "../../shopSlice";
+import { ShopProduct } from "../shopSlice";
 import {
   FaEdit,
   FaTrash,
@@ -162,7 +162,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           {product.description}
         </p>
 
-        <div className="flex items-center justify-between mb-3">
+        {/* <div className="flex items-center justify-between mb-3">
           <span className="text-xl font-bold text-emerald-600">
             ₹{product.price}
           </span>
@@ -173,7 +173,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
           >
             {product.stock < 10 ? "Low Stock" : "In Stock"}: {product.stock}
           </span>
-        </div>
+        </div> */}
 
         <div className="flex items-center mb-3">
           {[...Array(5)].map((_, i) => (

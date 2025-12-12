@@ -158,23 +158,23 @@ export const navItems: NavItem[] = [
     label: "Master Store",
     path: "/master-store",
     icon: "FaStore",
-    children: [
-      {
-        id: "master-products",
-        label: "Product Config",
-        path: "/masterStore/master-store",
-      },
-      {
-        id: "pricing",
-        label: "Pricing & Commission",
-        path: "/masterStore/pricing",
-      },
-      {
-        id: "store-assignment",
-        label: "Store Assignment",
-        path: "/masterStore/store-assignment",
-      },
-    ],
+    // children: [
+    //   {
+    //     id: "master-products",
+    //     label: "Product Config",
+    //     path: "/masterStore/master-store",
+    //   },
+    //   {
+    //     id: "pricing",
+    //     label: "Pricing & Commission",
+    //     path: "/masterStore/pricing",
+    //   },
+    //   {
+    //     id: "store-assignment",
+    //     label: "Store Assignment",
+    //     path: "/masterStore/store-assignment",
+    //   },
+    // ],
   },
   {
     id: "stores",
@@ -224,15 +224,13 @@ export const navItems: NavItem[] = [
       {
         id: "franchise-list",
         label: "Franchise List",
-        path: "/franchise-list",
+        path: "/franchise/franchise-list",
       },
-      { id: "franchise-regions", label: "Regions", path: "/franchise-regions" },
       {
-        id: "franchise-commission",
-        label: "Commission",
-        path: "/franchise-commission",
+        id: "franchise-location",
+        label: "Franchise Locations",
+        path: "/franchise/franchise-location",
       },
-      { id: "franchise-payouts", label: "Payouts", path: "/franchise-payouts" },
     ],
   },
   // {

@@ -18,15 +18,16 @@ import locationBannerReducer from "../modules/banners/locationBanners/locationBa
 
 import locationReducer from "../modules/locations/locationsSlice";
 
+import productsReducer from "../modules/masterStore/productsSlice";
+import monsterStoreReducer from "../modules/mosterStores/monsterStoreSlice";
 import masterProductsReducer from "../modules/mosterStores/masterProducts/masterProductsSlice";
-// import pricingReducer from "../modules/mosterStores/pricing/pricingSlice";
-// import storeAssignmentReducer from "../modules/mosterStores/storeAssignment/storeAssignmentSlice";
 
 // Store Module Reducers
 import storeListReducer from "../modules/stores/storeList/storeListSlice";
 import storeWalletReducer from "../modules/stores/storeWallet/storeWalletSlice";
 import storeAnalyticsReducer from "../modules/stores/storeAnalytics/storeAnalyticsSlice";
 import storePayoutsReducer from "../modules/stores/storePayouts/storePayoutsSlice";
+import storePaymentDetailsReducer from "../modules/payments/storePayments/storePaymentDetailsSlice";
 
 // Coupons Module Reducers
 import appCouponReducer from "../modules/coupons/appCoupons/appCouponsSlice";
@@ -50,6 +51,11 @@ import teamReducer from "../modules/users/team/teamSlice";
 import storeSettlementsReducer from "../modules/settlements/storeSettlements/storeSettlementsSlice";
 import dbSettlementsReducer from "../modules/settlements/dbSettlements/dbSettlementsSlice";
 import foSettlementsReducer from "../modules/settlements/foSettlements/foSettlementsSlice";
+import storeSettlementDetailsReducer from "../modules/settlements/storeSettlementDetails/storeSettlementDetailsSlice";
+
+// Franchise Modules Reducer
+import franchiseReducer from "../modules/franchise/franchiseList/franchiseSlice";
+import franchiseLocationReducer from "../modules/franchise/franchiseLocation/franchiseLocationSlice";
 
 import uiReducer from "./slices/uiSlice";
 import authReducer from "./slices/authSlice";
@@ -73,15 +79,16 @@ export const store = configureStore({
 
     locations: locationReducer,
 
+    products: productsReducer,
+    monsterStores: monsterStoreReducer,
     masterProducts: masterProductsReducer,
-    // pricing: pricingReducer,
-    // storeAssignment: storeAssignmentReducer,
 
     stores: storeReducer,
     storeList: storeListReducer,
     storeWallet: storeWalletReducer,
     storeAnalytics: storeAnalyticsReducer,
     storePayouts: storePayoutsReducer,
+    storePaymentDetails: storePaymentDetailsReducer,
 
     appCoupons: appCouponReducer,
     storeCoupons: storeCouponReducer,
@@ -101,6 +108,10 @@ export const store = configureStore({
     storeSettlements: storeSettlementsReducer,
     dbSettlements: dbSettlementsReducer,
     foSettlements: foSettlementsReducer,
+    storeSettlementDetails: storeSettlementDetailsReducer,
+
+    franchises: franchiseReducer,
+    franchiseLocations: franchiseLocationReducer,
 
     ui: uiReducer,
     auth: authReducer,

@@ -723,7 +723,7 @@ const Sidebar: React.FC = () => {
   const { sidebarCollapsed } = useAppSelector(selectUi);
   const location = useLocation();
 
-  const width = sidebarCollapsed ? "w-[72px]" : "w-[280px]";
+  const width = sidebarCollapsed ? "w-[62px]" : "w-[224px]";
 
   return (
     <aside
@@ -731,9 +731,9 @@ const Sidebar: React.FC = () => {
     >
       {/* Logo & Collapse Button */}
       <div className="flex items-center justify-between px-1 py-4 border-b border-green-600/30">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2.5 shadow-md">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
               <rect width="24" height="24" rx="6" fill="#fff" opacity="0.12" />
               <path
                 d="M12 2L2 7L12 12L22 7L12 2Z"
@@ -766,11 +766,11 @@ const Sidebar: React.FC = () => {
         <button
           aria-label="Toggle sidebar"
           onClick={() => dispatch(setSidebarCollapsed(!sidebarCollapsed))}
-          className="p-1 rounded-lg hover:bg-white/10 transition-colors duration-200"
+          className="rounded-lg hover:bg-white/10 transition-colors duration-200"
         >
           <svg
-            width="20"
-            height="20"
+            width="18"
+            height="18"
             viewBox="0 0 24 24"
             fill="none"
             className={`transition-transform duration-200 ${

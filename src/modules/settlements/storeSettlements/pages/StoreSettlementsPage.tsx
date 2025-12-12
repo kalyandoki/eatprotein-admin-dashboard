@@ -1,5 +1,6 @@
 // src/modules/settlements/storeSettlements/pages/StoreSettlementsPage.tsx
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../store/hooks";
 import {
   fetchStoreSettlements,
@@ -28,6 +29,7 @@ export default function StoreSettlementsPage() {
   const { settlements, status } = useAppSelector(
     (state) => state.storeSettlements
   );
+  const navigate = useNavigate();
   const [searchStore, setSearchStore] = useState("");
   const [selectedSettlement, setSelectedSettlement] =
     useState<StoreSettlement | null>(null);
@@ -380,8 +382,23 @@ export default function StoreSettlementsPage() {
                             {formatDate(settlement.date)}
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        {/* <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-sm font-medium text-gray-900">
+                            {settlement.storeName}
+                          </div>
+                        </td> */}
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div
+                            className="text-sm font-medium text-emerald-600 hover:text-emerald-800 cursor-pointer"
+                            onClick={() =>
+                              navigate(
+                                `/settlements/store-settlements/${encodeURIComponent(
+                                  settlement.storeName
+                                )}`
+                              )
+                            }
+                            title="Click to view details"
+                          >
                             {settlement.storeName}
                           </div>
                         </td>
