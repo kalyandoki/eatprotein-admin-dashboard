@@ -233,60 +233,60 @@ export const navItems: NavItem[] = [
       },
     ],
   },
-  // {
-  //   id: "diet",
-  //   label: "Diet Module",
-  //   path: "/diet",
-  //   icon: "FaAppleAlt",
-  //   children: [
-  //     { id: "nutritionists", label: "Nutritionists", path: "/nutritionists" },
-  //     { id: "diet-plans", label: "Diet Plans", path: "/diet-plans" },
-  //     {
-  //       id: "family-profiles",
-  //       label: "Family Profiles",
-  //       path: "/family-profiles",
-  //     },
-  //     { id: "labs", label: "Labs", path: "/labs" },
-  //     { id: "lab-reports", label: "Lab Reports", path: "/lab-reports" },
-  //   ],
-  // },
-  // {
-  //   id: "fitness",
-  //   label: "Fitness Module",
-  //   path: "/fitness",
-  //   icon: "FaDumbbell",
-  //   children: [
-  //     { id: "fitpass", label: "FitPass Plans", path: "/fitpass" },
-  //     {
-  //       id: "fitness-centres",
-  //       label: "Fitness Centres",
-  //       path: "/fitness-centres",
-  //     },
-  //     { id: "classes", label: "Classes", path: "/classes" },
-  //     { id: "rewards", label: "Rewards System", path: "/rewards" },
-  //     { id: "attendance", label: "Attendance", path: "/attendance" },
-  //   ],
-  // },
-  // {
-  //   id: "recipes",
-  //   label: "Recipes",
-  //   path: "/recipes",
-  //   icon: "FaUtensils",
-  //   children: [
-  //     { id: "recipe-list", label: "Recipe List", path: "/recipe-list" },
-  //     {
-  //       id: "recipe-categories",
-  //       label: "Categories",
-  //       path: "/recipe-categories",
-  //     },
-  //     { id: "creators", label: "Creators", path: "/creators" },
-  //     {
-  //       id: "creator-payouts",
-  //       label: "Creator Payouts",
-  //       path: "/creator-payouts",
-  //     },
-  //   ],
-  // },
+  {
+    id: "diet",
+    label: "Diet Module",
+    path: "/diet",
+    icon: "FaAppleAlt",
+    children: [
+      { id: "nutritionists", label: "Nutritionists", path: "/nutritionists" },
+      { id: "diet-plans", label: "Diet Plans", path: "/diet-plans" },
+      {
+        id: "family-profiles",
+        label: "Family Profiles",
+        path: "/family-profiles",
+      },
+      { id: "labs", label: "Labs", path: "/labs" },
+      { id: "lab-reports", label: "Lab Reports", path: "/lab-reports" },
+    ],
+  },
+  {
+    id: "fitness",
+    label: "Fitness Module",
+    path: "/fitness",
+    icon: "FaDumbbell",
+    children: [
+      { id: "fitpass", label: "FitPass Plans", path: "/fitpass" },
+      {
+        id: "fitness-centres",
+        label: "Fitness Centres",
+        path: "/fitness-centres",
+      },
+      { id: "classes", label: "Classes", path: "/classes" },
+      { id: "rewards", label: "Rewards System", path: "/rewards" },
+      { id: "attendance", label: "Attendance", path: "/attendance" },
+    ],
+  },
+  {
+    id: "recipes",
+    label: "Recipes",
+    path: "/recipes",
+    icon: "FaUtensils",
+    children: [
+      { id: "recipe-list", label: "Recipe List", path: "/recipe-list" },
+      {
+        id: "recipe-categories",
+        label: "Categories",
+        path: "/recipe-categories",
+      },
+      { id: "creators", label: "Creators", path: "/creators" },
+      {
+        id: "creator-payouts",
+        label: "Creator Payouts",
+        path: "/creator-payouts",
+      },
+    ],
+  },
   {
     id: "users",
     label: "Users",
@@ -371,16 +371,16 @@ export const navItems: NavItem[] = [
       },
     ],
   },
-  // {
-  //   id: "reports",
-  //   label: "Reports",
-  //   path: "/reports",
-  //   icon: "FaChartBar",
-  //   children: [
-  //     { id: "sales-reports", label: "Sales Reports", path: "/sales-reports" },
-  //     { id: "analytics", label: "Analytics", path: "/analytics" },
-  //     { id: "performance", label: "Performance", path: "/performance" },
-  //   ],
-  // },
-  // { id: "settings", label: "Settings", path: "/settings", icon: "FaCog" },
+  {
+    id: "reports",
+    label: "Reports",
+    path: "/reports",
+    icon: "FaChartBar",
+    children: [
+      { id: "sales-reports", label: "Sales Reports", path: "/sales-reports" },
+      { id: "analytics", label: "Analytics", path: "/analytics" },
+      { id: "performance", label: "Performance", path: "/performance" },
+    ],
+  },
+  { id: "settings", label: "Settings", path: "/settings", icon: "FaCog" },
 ];

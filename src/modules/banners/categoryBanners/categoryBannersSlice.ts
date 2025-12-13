@@ -185,6 +185,14 @@ const categoryBannersSlice = createSlice({
         state.banners.push(duplicatedBanner);
       }
     },
+    toggleCategoryBannerStatus: (state, action: PayloadAction<string>) => {
+      const index = state.banners.findIndex((b) => b.id === action.payload);
+      if (index !== -1) {
+        state.banners[index].status =
+          state.banners[index].status === "Active" ? "Inactive" : "Active";
+        state.banners[index].updatedAt = new Date().toISOString();
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -208,5 +216,6 @@ export const {
   editCategoryBanner,
   deleteCategoryBanner,
   duplicateCategoryBanner,
+  toggleCategoryBannerStatus,
 } = categoryBannersSlice.actions;
 export default categoryBannersSlice.reducer;

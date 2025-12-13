@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
 import { useNavigate } from "react-router-dom";
-import { fetchStores, Store } from "../storeSlice";
+import { fetchStores, Store, toggleStoreStatus } from "../storeSlice";
 import {
   FiPlus,
   FiSearch,
@@ -104,6 +104,10 @@ export default function StoreListPage() {
     foFilter,
     availableFilter,
   ]);
+
+  const handleToggleStatus = (storeId: string) => {
+    dispatch(toggleStoreStatus(storeId));
+  };
 
   const handleRefresh = () => {
     dispatch(fetchStores());
@@ -537,7 +541,7 @@ export default function StoreListPage() {
                             </span>
                           </div>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        {/* <td className="px-6 py-4 whitespace-nowrap">
                           <span
                             className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(
                               store.status
@@ -545,6 +549,37 @@ export default function StoreListPage() {
                           >
                             {store.status}
                           </span>
+                        </td> */}
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="flex items-center">
+                            <button
+                              onClick={() => handleToggleStatus(store.id)}
+                              className="relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+                              style={{
+                                backgroundColor:
+                                  store.status === "Active"
+                                    ? "#10b981"
+                                    : "#ef4444",
+                              }}
+                            >
+                              <span
+                                className="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"
+                                style={{
+                                  transform:
+                                    store.status === "Active"
+                                      ? "translateX(1.25rem)"
+                                      : "translateX(0.25rem)",
+                                }}
+                              />
+                            </button>
+                            {/* <span
+                              className={`ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(
+                                store.status
+                              )}`}
+                            >
+                              {store.status}
+                            </span> */}
+                          </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span

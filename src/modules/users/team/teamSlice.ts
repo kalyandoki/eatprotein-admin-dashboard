@@ -418,6 +418,13 @@ const teamSlice = createSlice({
         member.sno = index + 1;
       });
     },
+    toggleStatus: (state, action: PayloadAction<string>) => {
+      const index = state.members.findIndex((s) => s.id === action.payload);
+      if (index !== -1) {
+        state.members[index].status =
+          state.members[index].status === "Active" ? "Inactive" : "Active";
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -435,7 +442,7 @@ const teamSlice = createSlice({
   },
 });
 
-export const { addTeamMember, editTeamMember, deleteTeamMember } =
+export const { addTeamMember, editTeamMember, deleteTeamMember, toggleStatus } =
   teamSlice.actions;
 
 export default teamSlice.reducer;

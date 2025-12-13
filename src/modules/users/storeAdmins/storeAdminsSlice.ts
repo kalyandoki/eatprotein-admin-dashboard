@@ -158,6 +158,15 @@ const storeAdminsSlice = createSlice({
         admin.sno = index + 1;
       });
     },
+    toggleStatus: (state, action: PayloadAction<string>) => {
+      const index = state.admins.findIndex((c) => c.id === action.payload);
+      if (index !== -1) {
+        const currentStatus = state.admins[index].status;
+        state.admins[index].status =
+          currentStatus === "Active" ? "Inactive" : "Active";
+        state.admins[index].updatedAt = new Date().toISOString();
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -175,7 +184,7 @@ const storeAdminsSlice = createSlice({
   },
 });
 
-export const { addStoreAdmin, editStoreAdmin, deleteStoreAdmin } =
+export const { addStoreAdmin, editStoreAdmin, deleteStoreAdmin, toggleStatus } =
   storeAdminsSlice.actions;
 
 export default storeAdminsSlice.reducer;

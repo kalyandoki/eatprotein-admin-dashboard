@@ -6,6 +6,7 @@ import {
   DeliveryBoy,
   editDeliveryBoy,
   toggleAvailability,
+  toggleStatus,
 } from "../deliveryBoysSlice";
 import {
   FiPlus,
@@ -109,6 +110,10 @@ export default function DeliveryBoysPage() {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+  };
+
+  const handleToggleStatus = (storeId: string) => {
+    dispatch(toggleStatus(storeId));
   };
 
   const getStatusColor = (status: string) => {
@@ -394,7 +399,7 @@ export default function DeliveryBoysPage() {
                               : "Not Available"}
                           </span>
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
+                        {/* <td className="px-6 py-4 whitespace-nowrap">
                           <span
                             className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(
                               deliveryBoy.accountStatus
@@ -402,6 +407,37 @@ export default function DeliveryBoysPage() {
                           >
                             {deliveryBoy.accountStatus}
                           </span>
+                        </td> */}
+                        <td className="px-6 py-4 whitespace-nowrap">
+                          <div className="flex items-center">
+                            <button
+                              onClick={() => handleToggleStatus(deliveryBoy.id)}
+                              className="relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+                              style={{
+                                backgroundColor:
+                                  deliveryBoy.accountStatus === "Active"
+                                    ? "#10b981"
+                                    : "#ef4444",
+                              }}
+                            >
+                              <span
+                                className="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"
+                                style={{
+                                  transform:
+                                    deliveryBoy.accountStatus === "Active"
+                                      ? "translateX(1.25rem)"
+                                      : "translateX(0.25rem)",
+                                }}
+                              />
+                            </button>
+                            {/* <span
+                              className={`ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(
+                                deliveryBoy.accountStatus
+                              )}`}
+                            >
+                              {deliveryBoy.accountStatus}
+                            </span> */}
+                          </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                           <button

@@ -138,6 +138,13 @@ const franchiseOwnersSlice = createSlice({
         owner.sno = index + 1;
       });
     },
+    toggleStatus: (state, action: PayloadAction<string>) => {
+      const index = state.owners.findIndex((s) => s.id === action.payload);
+      if (index !== -1) {
+        state.owners[index].status =
+          state.owners[index].status === "Active" ? "Inactive" : "Active";
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -156,7 +163,11 @@ const franchiseOwnersSlice = createSlice({
   },
 });
 
-export const { addFranchiseOwner, editFranchiseOwner, deleteFranchiseOwner } =
-  franchiseOwnersSlice.actions;
+export const {
+  addFranchiseOwner,
+  editFranchiseOwner,
+  deleteFranchiseOwner,
+  toggleStatus,
+} = franchiseOwnersSlice.actions;
 
 export default franchiseOwnersSlice.reducer;

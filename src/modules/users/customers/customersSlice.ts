@@ -136,6 +136,13 @@ const customersSlice = createSlice({
         customer.sno = index + 1;
       });
     },
+    toggleStatus: (state, action: PayloadAction<string>) => {
+      const index = state.customers.findIndex((s) => s.id === action.payload);
+      if (index !== -1) {
+        state.customers[index].status =
+          state.customers[index].status === "Active" ? "Inactive" : "Active";
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -153,6 +160,6 @@ const customersSlice = createSlice({
   },
 });
 
-export const { addCustomer, editCustomer, deleteCustomer } =
+export const { addCustomer, editCustomer, deleteCustomer, toggleStatus } =
   customersSlice.actions;
 export default customersSlice.reducer;

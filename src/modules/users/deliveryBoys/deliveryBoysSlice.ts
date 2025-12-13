@@ -173,6 +173,17 @@ const deliveryBoysSlice = createSlice({
         deliveryBoy.updatedAt = new Date().toISOString();
       }
     },
+    toggleStatus: (state, action: PayloadAction<string>) => {
+      const index = state.deliveryBoys.findIndex(
+        (s) => s.id === action.payload
+      );
+      if (index !== -1) {
+        state.deliveryBoys[index].accountStatus =
+          state.deliveryBoys[index].accountStatus === "Active"
+            ? "Inactive"
+            : "Active";
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -195,6 +206,7 @@ export const {
   editDeliveryBoy,
   deleteDeliveryBoy,
   toggleAvailability,
+  toggleStatus,
 } = deliveryBoysSlice.actions;
 
 export default deliveryBoysSlice.reducer;

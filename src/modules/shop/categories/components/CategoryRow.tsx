@@ -1,6 +1,10 @@
 // src/modules/categories/components/CategoryRow.tsx
 import React, { useState } from "react";
-import { Category, setSelectedCategory } from "../categorySlice";
+import {
+  Category,
+  setSelectedCategory,
+  updateCategory,
+} from "../categorySlice";
 import { useAppDispatch } from "../../../../store/hooks";
 import EditCategoryModal from "./EditCategoryModal";
 import DeleteCategoryModal from "./DeleteCategoryModal";
@@ -20,6 +24,16 @@ const CategoryRow = ({ cat }: { cat: Category }) => {
   const openDeleteModal = () => {
     dispatch(setSelectedCategory(cat));
     setOpenDelete(true);
+  };
+
+  const handleToggleStatus = () => {
+    const newStatus = cat.status === "Active" ? "Inactive" : "Active";
+    dispatch(
+      updateCategory({
+        ...cat,
+        status: newStatus,
+      })
+    );
   };
 
   return (
@@ -47,15 +61,32 @@ const CategoryRow = ({ cat }: { cat: Category }) => {
           </div>
         </td>
         <td className="p-4">
-          <span
-            className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+          <button
+            onClick={handleToggleStatus}
+            className="relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+            style={{
+              backgroundColor: cat.status === "Active" ? "#10b981" : "#ef4444",
+            }}
+          >
+            <span
+              className="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"
+              style={{
+                transform:
+                  cat.status === "Active"
+                    ? "translateX(1.25rem)"
+                    : "translateX(0.25rem)",
+              }}
+            />
+          </button>
+          {/* <span
+            className={`ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
               cat.status === "Active"
                 ? "bg-green-100 text-green-800"
                 : "bg-red-100 text-red-800"
             }`}
           >
             {cat.status}
-          </span>
+          </span> */}
         </td>
         <td className="p-4">
           <div className="flex items-center">

@@ -172,7 +172,7 @@ const storeCouponsSlice = createSlice({
           id: Date.now().toString(),
           sno: state.coupons.length + 1,
           couponCode: `${couponToDuplicate.couponCode}_COPY`,
-          couponName: `${couponToDuplicate.couponName} (Copy)`,
+          // couponName: `${couponToDuplicate.couponName} (Copy)`,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
         };

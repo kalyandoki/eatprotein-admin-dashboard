@@ -5,12 +5,14 @@ import {
   FiEdit2,
   FiTrash2,
   FiPackage,
-  FiDollarSign,
+  // FaIndianRupeeSign,
   FiActivity,
   FiTrendingUp,
   FiTrendingDown,
   FiMinus,
 } from "react-icons/fi";
+import { FaIndianRupeeSign } from "react-icons/fa6";
+
 import Pagination from "../../../components/common/Pagination";
 
 interface ProductTableProps {
@@ -205,7 +207,7 @@ export default function ProductTable({
                   <td className="px-6 py-4 whitespace-nowrap">
                     <div className="flex flex-col space-y-2">
                       <div className="flex items-center text-sm text-gray-900">
-                        <FiDollarSign className="mr-1 h-4 w-4 text-gray-400" />
+                        <FaIndianRupeeSign className="mr-1 h-4 w-4 text-gray-400" />
                         <span className="font-medium">
                           {product.price.toFixed(2)}
                         </span>

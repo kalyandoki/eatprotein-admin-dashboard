@@ -16,9 +16,10 @@ import {
   FiFilter,
   FiActivity,
   FiTrendingUp,
-  FiDollarSign,
   FiBox,
 } from "react-icons/fi";
+import { FaIndianRupeeSign } from "react-icons/fa6";
+
 import ProductTable from "../components/ProductTable";
 import AddProductModal from "../components/AddProductModal";
 import EditProductModal from "../components/EditProductModal";
@@ -163,7 +164,7 @@ export default function MasterStorePage() {
                 </p>
               </div>
               <div className="bg-blue-100 p-3 rounded-full">
-                <FiDollarSign className="text-blue-600 text-xl" />
+                <FaIndianRupeeSign className="text-blue-600 text-xl" />
               </div>
             </div>
           </div>

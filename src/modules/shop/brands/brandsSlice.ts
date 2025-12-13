@@ -55,6 +55,12 @@ const brandsSlice = createSlice({
       };
       state.brands.unshift(newBrand);
     },
+    updateBrand: (state, action: PayloadAction<Brand>) => {
+      const index = state.brands.findIndex((b) => b.id === action.payload.id);
+      if (index !== -1) {
+        state.brands[index] = action.payload;
+      }
+    },
     editBrand: (state, action: PayloadAction<Brand>) => {
       const idx = state.brands.findIndex((b) => b.id === action.payload.id);
       if (idx !== -1) state.brands[idx] = action.payload;
@@ -79,5 +85,6 @@ const brandsSlice = createSlice({
   },
 });
 
-export const { addBrand, editBrand, deleteBrand } = brandsSlice.actions;
+export const { addBrand, updateBrand, editBrand, deleteBrand } =
+  brandsSlice.actions;
 export default brandsSlice.reducer;
