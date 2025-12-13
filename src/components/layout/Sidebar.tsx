@@ -723,11 +723,11 @@ const Sidebar: React.FC = () => {
   const { sidebarCollapsed } = useAppSelector(selectUi);
   const location = useLocation();
 
-  const width = sidebarCollapsed ? "w-[62px]" : "w-[224px]";
+  const width = sidebarCollapsed ? "w-[62px]" : "w-[230px]";
 
   return (
     <aside
-      className={`bg-gradient-to-b from-green-700 to-green-900 text-white ${width} transition-all duration-300 flex flex-col min-h-screen shadow-xl border-r border-green-600`}
+      className={`sticky top-0 h-screen bg-gradient-to-b from-green-700 to-green-900 text-white ${width} transition-all duration-300 flex flex-col min-h-screen shadow-xl border-r border-green-600`}
     >
       {/* Logo & Collapse Button */}
       <div className="flex items-center justify-between px-1 py-4 border-b border-green-600/30">
@@ -789,7 +789,7 @@ const Sidebar: React.FC = () => {
       </div>
 
       {/* Sidebar Navigation */}
-      <nav className="flex-1 overflow-auto px-3 py-4">
+      <nav className="flex-1 overflow-auto px-2 py-3">
         <ul className="space-y-2">
           {navItems.map((item) => {
             const isHeader = item.id === "nav-header";
@@ -843,7 +843,7 @@ const Sidebar: React.FC = () => {
       </nav>
 
       {/* Bottom Profile Section */}
-      <div className="px-3 py-4 border-t border-green-600/30">
+      <div className="px-0 py-2 border-t border-green-600/30">
         <div className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors duration-200">
           <div className="relative">
             <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white font-semibold">
@@ -863,7 +863,7 @@ const Sidebar: React.FC = () => {
           )}
         </div>
 
-        {!sidebarCollapsed && (
+        {/* {!sidebarCollapsed && (
           <div className="mt-3 flex gap-2">
             <button className="flex-1 py-1.5 px-2 bg-white/10 hover:bg-white/20 rounded text-xs text-center transition-colors duration-200">
               View Profile
@@ -872,7 +872,7 @@ const Sidebar: React.FC = () => {
               Settings
             </button>
           </div>
-        )}
+        )} */}
       </div>
     </aside>
   );

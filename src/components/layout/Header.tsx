@@ -979,13 +979,13 @@ export default function Header() {
           {/* Left Side - Menu and Search */}
           <div className="flex items-center space-x-4">
             {/* Toggle Sidebar Button */}
-            <button
+            {/* <button
               onClick={() => dispatch(toggleSidebar())}
               className="p-2 rounded-lg hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-200"
               aria-label="Toggle sidebar"
             >
               <FiMenu className="w-5 h-5 text-gray-700" />
-            </button>
+            </button> */}
 
             {/* Search Bar */}
             <div
@@ -1043,7 +1043,7 @@ export default function Header() {
           {/* Right Side - Actions and Profile */}
           <div className="flex items-center space-x-1 sm:space-x-2">
             {/* Dark Mode Toggle */}
-            <button
+            {/* <button
               onClick={() => dispatch(toggleDarkMode())}
               className="p-2 rounded-lg hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-200"
               aria-label="Toggle dark mode"
@@ -1053,7 +1053,7 @@ export default function Header() {
               ) : (
                 <FiSun className="w-5 h-5 text-gray-700" />
               )}
-            </button>
+            </button> */}
 
             {/* Notifications */}
             <div className="relative">

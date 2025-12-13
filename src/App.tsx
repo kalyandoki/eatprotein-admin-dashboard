@@ -21,10 +21,19 @@ export default function App() {
         <Header />
         <main
           id="main"
-          className={`p-6 transition-all duration-200`}
+          className={`p-1 transition-all duration-200`}
           aria-live="polite"
         >
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense
+            fallback={
+              <div className="flex justify-center items-center py-20 bg-white rounded-xl shadow-lg">
+                <div className="flex flex-col items-center">
+                  <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-500"></div>
+                  <p className="mt-4 text-gray-600">Loading...</p>
+                </div>
+              </div>
+            }
+          >
             <AppRoutes />
           </Suspense>
         </main>
