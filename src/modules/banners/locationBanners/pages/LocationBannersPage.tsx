@@ -5,6 +5,7 @@
 //   fetchLocationBanners,
 //   LocationBanner,
 //   duplicateLocationBanner,
+//   toggleLocationBannerStatus,
 // } from "../locationBannersSlice";
 // import {
 //   FiPlus,
@@ -94,6 +95,10 @@
 
 //   const handleDuplicate = (bannerId: string) => {
 //     dispatch(duplicateLocationBanner(bannerId));
+//   };
+
+//   const handleToggleStatus = (bannerId: string) => {
+//     dispatch(toggleLocationBannerStatus(bannerId));
 //   };
 
 //   const handlePageChange = (page: number) => {
@@ -311,6 +316,9 @@
 //                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
 //                       Banner Image
 //                     </th>
+//                     <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+//                       Status
+//                     </th>
 //                     <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
 //                       Actions
 //                     </th>
@@ -319,7 +327,7 @@
 //                 <tbody className="bg-white divide-y divide-gray-200">
 //                   {currentBanners.length === 0 ? (
 //                     <tr>
-//                       <td colSpan={6} className="px-6 py-16 text-center">
+//                       <td colSpan={7} className="px-6 py-16 text-center">
 //                         <div className="flex flex-col items-center">
 //                           <div className="bg-gray-100 p-4 rounded-full mb-4">
 //                             <FiMapPin className="h-12 w-12 text-gray-400" />
@@ -373,15 +381,6 @@
 //                           <div className="text-sm font-medium text-gray-900">
 //                             {banner.bannerName}
 //                           </div>
-//                           <div className="text-sm text-gray-500">
-//                             <span
-//                               className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(
-//                                 banner.status
-//                               )}`}
-//                             >
-//                               {banner.status}
-//                             </span>
-//                           </div>
 //                         </td>
 //                         <td className="px-6 py-4 whitespace-nowrap">
 //                           <div className="relative group">
@@ -401,6 +400,37 @@
 //                             </div>
 //                           </div>
 //                         </td>
+//                         <td className="px-6 py-4 whitespace-nowrap">
+//                           <div className="flex items-center">
+//                             <button
+//                               onClick={() => handleToggleStatus(banner.id)}
+//                               className="relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
+//                               style={{
+//                                 backgroundColor:
+//                                   banner.status === "Active"
+//                                     ? "#10b981"
+//                                     : "#ef4444",
+//                               }}
+//                             >
+//                               <span
+//                                 className="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"
+//                                 style={{
+//                                   transform:
+//                                     banner.status === "Active"
+//                                       ? "translateX(1.25rem)"
+//                                       : "translateX(0.25rem)",
+//                                 }}
+//                               />
+//                             </button>
+//                             {/* <span
+//                               className={`ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(
+//                                 banner.status
+//                               )}`}
+//                             >
+//                               {banner.status}
+//                             </span> */}
+//                           </div>
+//                         </td>
 //                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
 //                           <button
 //                             onClick={() => handleEdit(banner)}
@@ -409,13 +439,6 @@
 //                           >
 //                             <FiEdit2 className="text-lg" />
 //                           </button>
-//                           {/* <button
-//                             onClick={() => handleDuplicate(banner.id)}
-//                             className="text-blue-600 hover:text-blue-900 mr-3 transition-colors duration-150 p-1 rounded-full hover:bg-blue-50"
-//                             title="Duplicate"
-//                           >
-//                             <FiCopy className="text-lg" />
-//                           </button> */}
 //                           <button
 //                             onClick={() => handleDelete(banner)}
 //                             className="text-red-600 hover:text-red-900 transition-colors duration-150 p-1 rounded-full hover:bg-red-50"
@@ -481,6 +504,7 @@ import {
   LocationBanner,
   duplicateLocationBanner,
   toggleLocationBannerStatus,
+  updateLocationBannerImage,
 } from "../locationBannersSlice";
 import {
   FiPlus,
@@ -497,6 +521,7 @@ import AddLocationBannerModal from "../components/AddLocationBannerModal";
 import EditLocationBannerModal from "../components/EditLocationBannerModal";
 import DeleteLocationBannerModal from "../components/DeleteLocationBannerModal";
 import Pagination from "../../../../components/common/Pagination";
+import ImageUpload from "../../../../components/common/ImageUpload";
 
 export default function LocationBannersPage() {
   const dispatch = useAppDispatch();
@@ -574,6 +599,10 @@ export default function LocationBannersPage() {
 
   const handleToggleStatus = (bannerId: string) => {
     dispatch(toggleLocationBannerStatus(bannerId));
+  };
+
+  const handleImageChange = (bannerId: string, imageUrl: string) => {
+    dispatch(updateLocationBannerImage({ bannerId, imageUrl }));
   };
 
   const handlePageChange = (page: number) => {
@@ -858,22 +887,13 @@ export default function LocationBannersPage() {
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="relative group">
-                            <img
-                              src={banner.bannerImage}
-                              alt={banner.bannerName}
-                              className="h-16 w-24 object-cover rounded-lg cursor-pointer transition-all duration-200 group-hover:opacity-75"
-                              onClick={() => handleEdit(banner)}
-                            />
-                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                              <div className="bg-black bg-opacity-75 text-white p-1 rounded-full">
-                                <FiEdit2
-                                  className="h-4 w-4"
-                                  onClick={() => handleEdit(banner)}
-                                />
-                              </div>
-                            </div>
-                          </div>
+                          <ImageUpload
+                            initialImage={banner.bannerImage}
+                            onImageChange={(imageUrl) =>
+                              handleImageChange(banner.id, imageUrl)
+                            }
+                            size="sm"
+                          />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
@@ -897,13 +917,6 @@ export default function LocationBannersPage() {
                                 }}
                               />
                             </button>
-                            {/* <span
-                              className={`ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getStatusColor(
-                                banner.status
-                              )}`}
-                            >
-                              {banner.status}
-                            </span> */}
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

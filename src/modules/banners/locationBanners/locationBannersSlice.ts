@@ -396,6 +396,16 @@ const locationBannersSlice = createSlice({
         state.banners[index].updatedAt = new Date().toISOString();
       }
     },
+    updateLocationBannerImage: (
+      state,
+      action: PayloadAction<{ bannerId: string; imageUrl: string }>
+    ) => {
+      const { bannerId, imageUrl } = action.payload;
+      const banner = state.banners.find((b) => b.id === bannerId);
+      if (banner) {
+        banner.bannerImage = imageUrl;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -420,5 +430,6 @@ export const {
   deleteLocationBanner,
   duplicateLocationBanner,
   toggleLocationBannerStatus,
+  updateLocationBannerImage,
 } = locationBannersSlice.actions;
 export default locationBannersSlice.reducer;

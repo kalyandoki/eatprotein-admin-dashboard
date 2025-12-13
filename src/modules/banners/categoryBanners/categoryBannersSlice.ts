@@ -193,6 +193,16 @@ const categoryBannersSlice = createSlice({
         state.banners[index].updatedAt = new Date().toISOString();
       }
     },
+    updateCategoryBannerImage: (
+      state,
+      action: PayloadAction<{ bannerId: string; imageUrl: string }>
+    ) => {
+      const { bannerId, imageUrl } = action.payload;
+      const banner = state.banners.find((b) => b.id === bannerId);
+      if (banner) {
+        banner.bannerImage = imageUrl;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -217,5 +227,6 @@ export const {
   deleteCategoryBanner,
   duplicateCategoryBanner,
   toggleCategoryBannerStatus,
+  updateCategoryBannerImage,
 } = categoryBannersSlice.actions;
 export default categoryBannersSlice.reducer;

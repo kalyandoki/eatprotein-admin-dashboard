@@ -1732,6 +1732,7 @@
 import React, { useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../../store";
+import ImageUpload from "../../../components/common/ImageUpload";
 import {
   ShopProduct,
   addShopProduct,
@@ -1859,6 +1860,18 @@ const ShopProductsPage: React.FC = () => {
   const closeDeleteModal = () => {
     setDeleteModalOpen(false);
     dispatch(setSelectedProduct(null));
+  };
+
+  const handleProductImageChange = (productId: number, imageUrl: string) => {
+    const product = products.find((p) => p.id === productId);
+    if (product) {
+      dispatch(
+        editShopProduct({
+          ...product,
+          image: imageUrl,
+        })
+      );
+    }
   };
 
   const clearFilters = () => {
@@ -2094,6 +2107,9 @@ const ShopProductsPage: React.FC = () => {
                       onToggleSelect={() => toggleSelectProduct(p.id)}
                       onEdit={() => openModal(p)}
                       onDelete={() => handleDelete(p)}
+                      onImageChange={(imageUrl) =>
+                        handleProductImageChange(p.id, imageUrl)
+                      }
                     />
                   ))}
                 </div>
@@ -2148,10 +2164,14 @@ const ShopProductsPage: React.FC = () => {
                           <td className="p-3">
                             <div className="flex items-center">
                               <div className="h-16 w-16 rounded-lg overflow-hidden mr-4 bg-gray-100 flex-shrink-0">
-                                <img
-                                  src={p.image}
-                                  alt={p.name}
-                                  className="h-full w-full object-cover"
+                                <ImageUpload
+                                  initialImage={p.image}
+                                  onImageChange={(imageUrl) =>
+                                    handleProductImageChange(p.id, imageUrl)
+                                  }
+                                  height="h-16"
+                                  width="w-16"
+                                  className="rounded-lg"
                                 />
                               </div>
                               <div>
@@ -2206,10 +2226,17 @@ const ShopProductsPage: React.FC = () => {
                             <div className="flex items-start gap-3">
                               {p.nutrition.image && (
                                 <div className="h-16 w-16 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
-                                  <img
-                                    src={p.nutrition.image}
-                                    alt="Nutrition"
-                                    className="h-full w-full object-cover"
+                                  <ImageUpload
+                                    initialImage={p.nutrition.image}
+                                    onImageChange={(imageUrl) =>
+                                      handleProductImageChange(
+                                        p.nutrition.id,
+                                        imageUrl
+                                      )
+                                    }
+                                    height="h-16"
+                                    width="w-16"
+                                    className="rounded-lg"
                                   />
                                 </div>
                               )}

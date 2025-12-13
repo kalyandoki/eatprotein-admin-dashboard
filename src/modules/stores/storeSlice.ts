@@ -381,6 +381,16 @@ const storeSlice = createSlice({
           state.stores[index].status === "Active" ? "Inactive" : "Active";
       }
     },
+    updateStoreLogo: (
+      state,
+      action: PayloadAction<{ storeId: string; logoUrl: string }>
+    ) => {
+      const { storeId, logoUrl } = action.payload;
+      const store = state.stores.find((s) => s.id === storeId);
+      if (store) {
+        store.logo = logoUrl;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -398,6 +408,11 @@ const storeSlice = createSlice({
   },
 });
 
-export const { addStore, editStore, deleteStore, toggleStoreStatus } =
-  storeSlice.actions;
+export const {
+  addStore,
+  editStore,
+  deleteStore,
+  toggleStoreStatus,
+  updateStoreLogo,
+} = storeSlice.actions;
 export default storeSlice.reducer;

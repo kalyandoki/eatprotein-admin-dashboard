@@ -171,6 +171,16 @@ const appCouponsSlice = createSlice({
         state.coupons.push(duplicatedCoupon);
       }
     },
+    updateAppCouponImage: (
+      state,
+      action: PayloadAction<{ couponId: string; imageUrl: string }>
+    ) => {
+      const { couponId, imageUrl } = action.payload;
+      const coupon = state.coupons.find((c) => c.id === couponId);
+      if (coupon) {
+        coupon.couponImage = imageUrl;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -193,5 +203,6 @@ export const {
   editAppCoupon,
   deleteAppCoupon,
   duplicateAppCoupon,
+  updateAppCouponImage,
 } = appCouponsSlice.actions;
 export default appCouponsSlice.reducer;
