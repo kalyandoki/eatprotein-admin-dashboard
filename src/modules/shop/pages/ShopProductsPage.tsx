@@ -2163,15 +2163,16 @@ const ShopProductsPage: React.FC = () => {
                           </td>
                           <td className="p-3">
                             <div className="flex items-center">
-                              <div className="h-16 w-16 rounded-lg overflow-hidden mr-4 bg-gray-100 flex-shrink-0">
+                              <div className=" rounded-lg overflow-hidden mr-4 bg-gray-100 flex-shrink-0">
                                 <ImageUpload
                                   initialImage={p.image}
                                   onImageChange={(imageUrl) =>
                                     handleProductImageChange(p.id, imageUrl)
                                   }
-                                  height="h-16"
-                                  width="w-16"
-                                  className="rounded-lg"
+                                  // height="h-16"
+                                  // width="w-16"
+                                  // className="rounded-lg"
+                                  size="md"
                                 />
                               </div>
                               <div>
@@ -2225,7 +2226,7 @@ const ShopProductsPage: React.FC = () => {
                           <td className="p-3">
                             <div className="flex items-start gap-3">
                               {p.nutrition.image && (
-                                <div className="h-16 w-16 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
+                                <div className=" rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
                                   <ImageUpload
                                     initialImage={p.nutrition.image}
                                     onImageChange={(imageUrl) =>
@@ -2234,9 +2235,10 @@ const ShopProductsPage: React.FC = () => {
                                         imageUrl
                                       )
                                     }
-                                    height="h-16"
-                                    width="w-16"
-                                    className="rounded-lg"
+                                    size="md"
+                                    // height="h-16"
+                                    // width="w-20"
+                                    // className="rounded-lg"
                                   />
                                 </div>
                               )}

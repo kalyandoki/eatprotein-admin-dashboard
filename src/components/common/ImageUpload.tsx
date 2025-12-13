@@ -33,7 +33,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   }, [initialImage]);
 
   const sizeClasses = {
-    sm: "w-22 h-17",
+    sm: "w-22 h-18",
     md: "w-24 h-20",
     lg: "w-32 h-32",
   };
