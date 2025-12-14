@@ -102,27 +102,76 @@ export const navItems: NavItem[] = [
   { id: "dashboard", label: "Dashboard", path: "/dashboard", icon: "FaHome" },
   {
     id: "shop",
-    label: "Shop Module",
+    label: "CMS",
     path: "/shop",
     icon: "FaShoppingCart",
     children: [
-      { id: "products", label: "Products", path: "shop/products" },
-      { id: "categories", label: "Categories", path: "shop/categories" },
+      { id: "categories", label: "Main Categories", path: "shop/categories" },
       {
         id: "sub-categories",
         label: "Sub Categories",
         path: "shop/sub-categories",
       },
       { id: "brands", label: "Brands", path: "shop/brands" },
+      { id: "products", label: "Products", path: "shop/products" },
       { id: "uom", label: "UOM", path: "shop/uom" },
-      { id: "tags", label: "Tags", path: "shop/tags" },
+      { id: "tags", label: "Product Tags", path: "shop/tags" },
       { id: "store-tags", label: "Store Tags", path: "shop/store-tags" },
 
       // { id: "orders", label: "Orders", path: "/orders" },
       // { id: "delivery", label: "Delivery Boys", path: "/delivery" },
     ],
   },
-  { id: "orders", label: "Orders", path: "/orders", icon: "FaBoxOpen" },
+  {
+    id: "master",
+    label: "Master Store",
+    path: "/master-store",
+    icon: "FaStore",
+  },
+  {
+    id: "franchise",
+    label: "Franchise",
+    path: "/franchise",
+    icon: "FaNetworkWired",
+    children: [
+      {
+        id: "franchise-list",
+        label: "Franchise Owners",
+        path: "/franchise/franchise-list",
+      },
+      {
+        id: "franchise-location",
+        label: "Franchise Locations",
+        path: "/franchise/franchise-location",
+      },
+    ],
+  },
+  {
+    id: "locations",
+    label: "Locations",
+    path: "/locations",
+    icon: "FaMapMarkerAlt",
+  },
+  {
+    id: "stores",
+    label: "Stores",
+    path: "/stores",
+    icon: "FaShop",
+    // children: [
+    //   { id: "store-list", label: "Store List", path: "/stores/store-list" },
+    //   {
+    //     id: "store-wallet",
+    //     label: "Store Wallet",
+    //     path: "/stores/store-wallet",
+    //   },
+    //   { id: "store-payouts", label: "Payouts", path: "/stores/store-payouts" },
+    //   {
+    //     id: "store-analytics",
+    //     label: "Analytics",
+    //     path: "/stores/store-analytics",
+    //   },
+    // ],
+  },
 
   {
     id: "banners",
@@ -147,55 +196,7 @@ export const navItems: NavItem[] = [
       },
     ],
   },
-  {
-    id: "locations",
-    label: "Locations",
-    path: "/locations",
-    icon: "FaMapMarkerAlt",
-  },
-  {
-    id: "master",
-    label: "Master Store",
-    path: "/master-store",
-    icon: "FaStore",
-    // children: [
-    //   {
-    //     id: "master-products",
-    //     label: "Product Config",
-    //     path: "/masterStore/master-store",
-    //   },
-    //   {
-    //     id: "pricing",
-    //     label: "Pricing & Commission",
-    //     path: "/masterStore/pricing",
-    //   },
-    //   {
-    //     id: "store-assignment",
-    //     label: "Store Assignment",
-    //     path: "/masterStore/store-assignment",
-    //   },
-    // ],
-  },
-  {
-    id: "stores",
-    label: "Stores",
-    path: "/stores",
-    icon: "FaShop",
-    // children: [
-    //   { id: "store-list", label: "Store List", path: "/stores/store-list" },
-    //   {
-    //     id: "store-wallet",
-    //     label: "Store Wallet",
-    //     path: "/stores/store-wallet",
-    //   },
-    //   { id: "store-payouts", label: "Payouts", path: "/stores/store-payouts" },
-    //   {
-    //     id: "store-analytics",
-    //     label: "Analytics",
-    //     path: "/stores/store-analytics",
-    //   },
-    // ],
-  },
+
   {
     id: "coupons",
     label: "Coupons",
@@ -215,24 +216,41 @@ export const navItems: NavItem[] = [
       },
     ],
   },
+  { id: "orders", label: "Orders", path: "/orders", icon: "FaBoxOpen" },
   {
-    id: "franchise",
-    label: "Franchise",
-    path: "/franchise",
-    icon: "FaNetworkWired",
+    id: "users",
+    label: "Users",
+    path: "/users",
+    icon: "FaUsers",
     children: [
       {
-        id: "franchise-list",
-        label: "Franchise List",
-        path: "/franchise/franchise-list",
+        id: "customers",
+        label: "Customers",
+        path: "/users/customers",
       },
       {
-        id: "franchise-location",
-        label: "Franchise Locations",
-        path: "/franchise/franchise-location",
+        id: "franchise-owner",
+        label: "Franchise Owner",
+        path: "/users/franchise-owner",
+      },
+      {
+        id: "store-admins",
+        label: "Store Admins",
+        path: "/users/store-admins",
+      },
+      {
+        id: "delivery-boys",
+        label: "Delivery Boys",
+        path: "/users/delivery-boys",
+      },
+      {
+        id: "team",
+        label: "Team",
+        path: "/users/team",
       },
     ],
   },
+
   {
     id: "diet",
     label: "Diet Module",
@@ -288,39 +306,6 @@ export const navItems: NavItem[] = [
     ],
   },
   {
-    id: "users",
-    label: "Users",
-    path: "/users",
-    icon: "FaUsers",
-    children: [
-      {
-        id: "customers",
-        label: "Customers",
-        path: "/users/customers",
-      },
-      {
-        id: "franchise-owner",
-        label: "Franchise Owner",
-        path: "/users/franchise-owner",
-      },
-      {
-        id: "store-admins",
-        label: "Store Admins",
-        path: "/users/store-admins",
-      },
-      {
-        id: "delivery-boys",
-        label: "Delivery Boys",
-        path: "/users/delivery-boys",
-      },
-      {
-        id: "team",
-        label: "Team",
-        path: "/users/team",
-      },
-    ],
-  },
-  {
     id: "payments",
     label: "Payments",
     path: "/payments",
@@ -371,6 +356,7 @@ export const navItems: NavItem[] = [
       },
     ],
   },
+
   {
     id: "reports",
     label: "Reports",
