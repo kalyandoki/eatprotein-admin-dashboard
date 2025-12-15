@@ -57,6 +57,11 @@ import storeSettlementDetailsReducer from "../modules/settlements/storeSettlemen
 import franchiseReducer from "../modules/franchise/franchiseList/franchiseSlice";
 import franchiseLocationReducer from "../modules/franchise/franchiseLocation/franchiseLocationSlice";
 
+//Product Modules Reducer
+import productCategoryReduces from "../modules/products/categorySlice";
+import productReduces from "../modules/products/productSlice";
+import productSubCategoryReduces from "../modules/products/subCategorySlice";
+
 import uiReducer from "./slices/uiSlice";
 import authReducer from "./slices/authSlice";
 import dataReducer from "./slices/dataSlice";
@@ -73,15 +78,19 @@ export const store = configureStore({
 
     orders: orderReducer,
 
+    products: productReduces,
+    productCategory: productCategoryReduces,
+    productSubCategories: productSubCategoryReduces,
+
     homeBanners: bannerReducer,
     categoryBanners: categoryBannerReducer,
     locationBanners: locationBannerReducer,
 
     locations: locationReducer,
 
-    products: productsReducer,
+    masterProducts: productsReducer,
     monsterStores: monsterStoreReducer,
-    masterProducts: masterProductsReducer,
+    // masterProducts: masterProductsReducer,
 
     stores: storeReducer,
     storeList: storeListReducer,

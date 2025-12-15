@@ -361,7 +361,7 @@ import DeleteProductModal from "../components/DeleteProductModal";
 
 export default function MasterStorePage() {
   const dispatch = useAppDispatch();
-  const { products, status } = useAppSelector((state) => state.products);
+  const { products, status } = useAppSelector((state) => state.masterProducts);
   const [searchProduct, setSearchProduct] = useState("");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [showAddModal, setShowAddModal] = useState(false);

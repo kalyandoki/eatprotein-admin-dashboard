@@ -4,6 +4,7 @@ import Sidebar from "./components/layout/Sidebar";
 import Header from "./components/layout/Header";
 import { useAppSelector } from "./store/hooks";
 import { selectUi } from "./store/slices/uiSlice";
+import ConfirmationModal from "./components/common/ConfirmationModal";
 
 /**
  * App layout: Sidebar (persistent) + Header + Main
@@ -38,6 +39,7 @@ export default function App() {
           </Suspense>
         </main>
       </div>
+      <ConfirmationModal />
     </div>
   );
 }

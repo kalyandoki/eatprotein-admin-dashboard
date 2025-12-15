@@ -344,6 +344,13 @@
 //     deleteStoreTag: (state, action: PayloadAction<string>) => {
 //       state.storeTags = state.storeTags.filter((t) => t.id !== action.payload);
 //     },
+//     toggleStoreTagStatus: (state, action: PayloadAction<string>) => {
+//       const index = state.storeTags.findIndex((t) => t.id === action.payload);
+//       if (index !== -1) {
+//         state.storeTags[index].status =
+//           state.storeTags[index].status === "Active" ? "Inactive" : "Active";
+//       }
+//     },
 //   },
 //   extraReducers: (builder) => {
 //     builder
@@ -372,8 +379,12 @@
 //   },
 // });
 
-// export const { addStoreTag, editStoreTag, deleteStoreTag } =
-//   storeTagsSlice.actions;
+// export const {
+//   addStoreTag,
+//   editStoreTag,
+//   deleteStoreTag,
+//   toggleStoreTagStatus,
+// } = storeTagsSlice.actions;
 // export default storeTagsSlice.reducer;
 
 // src/modules/shop/storeTags/storeTagsSlice.ts
@@ -390,13 +401,20 @@ export interface Store {
   email: string;
   manager: string;
   status: "Active" | "Inactive";
+  // New fields
+  category: string;
+  categoryName: string;
+  subcategory: string;
+  subcategoryName: string;
+  region: string;
+  regionName: string;
 }
 
 export interface StoreTag {
   id: string;
   name: string;
   description: string;
-  storeIds: string[]; // Changed from single store to array of store IDs
+  storeIds: string[];
   priority: "High" | "Medium" | "Low";
   status: "Active" | "Inactive";
 }
@@ -407,6 +425,55 @@ interface StoreTagsState {
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
+
+// Define store categories and subcategories
+const storeCategories = [
+  {
+    id: "flagship",
+    name: "Flagship",
+    subcategories: [
+      { id: "downtown", name: "Downtown" },
+      { id: "mall", name: "Shopping Mall" },
+      { id: "airport", name: "Airport" },
+    ],
+  },
+  {
+    id: "community",
+    name: "Community",
+    subcategories: [
+      { id: "suburban", name: "Suburban" },
+      { id: "urban", name: "Urban" },
+      { id: "rural", name: "Rural" },
+    ],
+  },
+  {
+    id: "express",
+    name: "Express",
+    subcategories: [
+      { id: "kiosk", name: "Kiosk" },
+      { id: "small-format", name: "Small Format" },
+      { id: "pickup-point", name: "Pickup Point" },
+    ],
+  },
+  {
+    id: "outlet",
+    name: "Outlet",
+    subcategories: [
+      { id: "factory-outlet", name: "Factory Outlet" },
+      { id: "clearance-center", name: "Clearance Center" },
+      { id: "discount-store", name: "Discount Store" },
+    ],
+  },
+];
+
+// Define regions
+const regions = [
+  { id: "northeast", name: "Northeast" },
+  { id: "southeast", name: "Southeast" },
+  { id: "midwest", name: "Midwest" },
+  { id: "southwest", name: "Southwest" },
+  { id: "west", name: "West" },
+];
 
 // Function to generate 1000 mock stores
 const generateStores = (): Store[] => {
@@ -540,6 +607,41 @@ const generateStores = (): Store[] => {
     const storeName = storeNames[Math.floor(Math.random() * storeNames.length)];
     const managerName = `Manager ${i}`;
 
+    // Select category and subcategory
+    const category =
+      storeCategories[Math.floor(Math.random() * storeCategories.length)];
+    const subcategory =
+      category.subcategories[
+        Math.floor(Math.random() * category.subcategories.length)
+      ];
+
+    // Select region based on state
+    let regionId = "northeast"; // default
+    if (["CA", "OR", "WA", "NV", "AZ"].includes(state)) regionId = "west";
+    else if (["TX", "OK", "NM", "CO", "UT"].includes(state))
+      regionId = "southwest";
+    else if (["FL", "GA", "AL", "MS", "LA", "SC", "NC", "TN"].includes(state))
+      regionId = "southeast";
+    else if (
+      [
+        "OH",
+        "MI",
+        "IN",
+        "IL",
+        "WI",
+        "MN",
+        "IA",
+        "MO",
+        "KS",
+        "NE",
+        "SD",
+        "ND",
+      ].includes(state)
+    )
+      regionId = "midwest";
+
+    const region = regions.find((r) => r.id === regionId);
+
     stores.push({
       id: `store-${i}`,
       name: `${storeName} Store #${i}`,
@@ -553,11 +655,20 @@ const generateStores = (): Store[] => {
       email: `store${i}@example.com`,
       manager: managerName,
       status: Math.random() > 0.1 ? "Active" : "Inactive",
+      category: category.id,
+      categoryName: category.name,
+      subcategory: subcategory.id,
+      subcategoryName: subcategory.name,
+      region: region.id,
+      regionName: region.name,
     });
   }
 
   return stores;
 };
+
+// Export the categories and regions for use in components
+export { storeCategories, regions };
 
 const initialState: StoreTagsState = {
   stores: generateStores(),

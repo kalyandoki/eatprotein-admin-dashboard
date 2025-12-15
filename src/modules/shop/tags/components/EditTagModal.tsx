@@ -1135,13 +1135,50 @@ export default function EditTagModal({
               {/* Category Filter */}
               <div className="mb-4">
                 <div className="flex items-center justify-between mb-2">
-                  <button
+                  {/* <button
                     type="button"
                     onClick={() => setShowCategoryFilter(!showCategoryFilter)}
                     className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-gray-900"
                   >
                     <FiFilter className="text-sm" />
                     Filter by Category
+                  </button> */}
+                  <button
+                    type="button"
+                    onClick={() => setShowCategoryFilter(!showCategoryFilter)}
+                    className={`flex items-center gap-2 text-sm font-medium px-3 py-2 rounded-lg transition-all duration-200 ${
+                      showCategoryFilter
+                        ? "bg-[#258440] text-white shadow-md"
+                        : selectedCategories.length > 0 ||
+                          selectedSubcategories.length > 0
+                        ? "bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200"
+                    }`}
+                  >
+                    <FiFilter className="text-sm" />
+                    <span>Filter by Category</span>
+
+                    {/* Active filters count badge */}
+                    {(selectedCategories.length > 0 ||
+                      selectedSubcategories.length > 0) && (
+                      <span
+                        className={`inline-flex items-center justify-center px-2 py-0.5 text-xs font-bold rounded-full ${
+                          showCategoryFilter
+                            ? "bg-white text-[#258440]"
+                            : "bg-blue-600 text-white"
+                        }`}
+                      >
+                        {selectedCategories.length +
+                          selectedSubcategories.length}
+                      </span>
+                    )}
+
+                    {/* Expand/Collapse indicator */}
+                    <FiChevronDown
+                      className={`text-sm transition-transform duration-200 ${
+                        showCategoryFilter ? "rotate-180" : ""
+                      }`}
+                    />
                   </button>
                   {(selectedCategories.length > 0 ||
                     selectedSubcategories.length > 0) && (

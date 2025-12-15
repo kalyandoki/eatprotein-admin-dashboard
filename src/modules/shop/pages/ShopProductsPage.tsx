@@ -2405,7 +2405,7 @@ const ShopProductsPage: React.FC = () => {
   );
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [viewMode, setViewMode] = useState<"table" | "card">("card");
+  const [viewMode, setViewMode] = useState<"table" | "card">("table");
   const [selectedProducts, setSelectedProducts] = useState<number[]>([]);
   const [sortBy, setSortBy] = useState("name");
   const [filterOpen, setFilterOpen] = useState(false);

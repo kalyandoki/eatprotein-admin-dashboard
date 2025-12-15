@@ -377,11 +377,28 @@ export default function StoreProductsPage() {
                 <FiRefreshCw className="text-sm" /> Refresh
               </button>
               <button
-                onClick={() => setShowAddModal(true)}
+                // onClick={() => setShowAddModal(true)}
+                onClick={() =>
+                  navigate(
+                    `/stores/store-products/${store.storeId}/category-list`
+                  )
+                }
                 className="px-3 py-1 bg-emerald-600 text-white text-sm rounded hover:bg-emerald-700 transition-colors duration-200 flex items-center gap-1"
               >
                 <FiPlus className="text-sm" /> Add Product
               </button>
+              {/* <button
+                onClick={() =>
+                  navigate(
+                    `/stores/store-products/${store.storeId}/category-list`
+                  )
+                }
+                className="text-green-600 hover:text-green-900 transition-colors duration-150 p-1 rounded-full hover:bg-blue-50"
+                title="Add Product"
+              >
+                <FiPlus className="text-lg" />
+                Add Product
+              </button> */}
             </div>
           </div>
           <div className="px-6 py-4 border-b border-gray-200">

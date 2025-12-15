@@ -87,18 +87,27 @@ const StorePage = lazy(() => import("../modules/stores/pages/StorePage"));
 const StoreProductsPage = lazy(
   () => import("../modules/stores/pages/StoreProductsPage")
 );
-const StoreListPage = lazy(
-  () => import("../modules/stores/storeList/pages/StoreListPage")
+const CategoryListPage = lazy(
+  () => import("../modules/products/pages/CategoryListPage")
 );
-const StoreWalletPage = lazy(
-  () => import("../modules/stores/storeWallet/pages/StoreWalletPage")
+const SubCategoryListPage = lazy(
+  () => import("../modules/products/pages/SubCategoryListPage")
 );
-const StoreAnalyticsPage = lazy(
-  () => import("../modules/stores/storeAnalytics/pages/StoreAnalyticsPage")
+const ProductsListPage = lazy(
+  () => import("../modules/products/pages/ProductsListPage")
 );
-const StorePayoutsPage = lazy(
-  () => import("../modules/stores/storePayouts/pages/StorePayoutsPage")
-);
+// const StoreListPage = lazy(
+//   () => import("../modules/stores/storeList/pages/StoreListPage")
+// );
+// const StoreWalletPage = lazy(
+//   () => import("../modules/stores/storeWallet/pages/StoreWalletPage")
+// );
+// const StoreAnalyticsPage = lazy(
+//   () => import("../modules/stores/storeAnalytics/pages/StoreAnalyticsPage")
+// );
+// const StorePayoutsPage = lazy(
+//   () => import("../modules/stores/storePayouts/pages/StorePayoutsPage")
+// );
 
 // Coupons Module Page
 const CouponsPage = lazy(
@@ -222,13 +231,25 @@ export default function AppRoutes() {
           path="stores/store-products/:storeName"
           element={<StoreProductsPage />}
         />
-        <Route path="/stores/store-list" element={<StoreListPage />} />
+        <Route
+          path="/stores/store-products/:storeId/category-list"
+          element={<CategoryListPage />}
+        />
+        <Route
+          path="/stores/store-products/:storeId/category-list/:categoryName"
+          element={<SubCategoryListPage />}
+        />
+        <Route
+          path="/stores/store-products/:storeId/category-list/:categoryName/:subCategoryName"
+          element={<ProductsListPage />}
+        />
+        {/* <Route path="/stores/store-list" element={<StoreListPage />} />
         <Route path="/stores/store-wallet" element={<StoreWalletPage />} />
         <Route
           path="/stores/store-analytics"
           element={<StoreAnalyticsPage />}
         />
-        <Route path="/stores/store-payouts" element={<StorePayoutsPage />} />
+        <Route path="/stores/store-payouts" element={<StorePayoutsPage />} /> */}
         {/* Coupons Module Route */}
         <Route path="/coupons/app-coupons" element={<CouponsPage />} />
         <Route path="/coupons/store-coupons" element={<StoreCouponsPage />} />
